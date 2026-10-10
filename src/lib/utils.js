@@ -1,0 +1,13 @@
+export const cn = (...a) => a.filter(Boolean).join(" ");
+export const hash = (s) => [...String(s)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+export const uid = (p = "ID") => p + "-" + Math.random().toString(36).slice(2, 7).toUpperCase();
+export const iso = (n = 0) => new Date(Date.now() + n * 864e5).toISOString().slice(0, 10);
+export const dayLabel = (d) => new Date(d + "T00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" });
+export const initials = (n) => String(n || "?").replace("Dr. ", "").split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+export const feeFor = (id) => 300 + (hash(id) % 8) * 100;
+export const ratingFor = (id) => (4 + (hash(id) % 9) / 10).toFixed(1);
+export const langsFor = (id) => [["English", "Tamil"], ["English", "Tamil", "Hindi"], ["English", "Telugu", "Tamil"], ["English", "Tamil", "Malayalam"]][hash(id) % 4];
+export const healthId = (s) => { const h = String(hash(s)).padStart(10, "0") + String(hash(s + "x")).padStart(10, "0"); return `${h.slice(0, 2)}-${h.slice(2, 6)}-${h.slice(6, 10)}-${h.slice(10, 14)}`; };
+export const timeSlots = () => { const o = []; for (let h = 9; h < 18; h++) { const p = String(h).padStart(2, "0"); o.push(p + ":00", p + ":30"); } return o; };
+export const downloadJSON = (name, obj) => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" })); a.download = name; a.click(); };
+export const inr = (n) => "₹" + Number(n).toLocaleString("en-IN");

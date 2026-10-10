@@ -1,0 +1,6 @@
+export const LANGS = { en: "English", ta: "தமிழ்", hi: "हिन्दी" };
+export const dict = {
+  en: { hero_title: "Healthcare for every Chennai home", hero_sub: "Consult doctors by video, get AI triage, order medicines and book tests on one connected grid.", nav_doctors: "Doctors", nav_facilities: "Hospitals & Labs", nav_emergency: "Emergency", login: "Access Portal", dashboard: "Dashboard", find: "Find a doctor", search_ph: "Search doctor, specialty or hospital" },
+  ta: { hero_title: "ஒவ்வொரு சென்னை இல்லத்திற்கும் மருத்துவ சேவை", hero_sub: "வீடியோ மூலம் மருத்துவர்களை அணுகுங்கள். AI பரிசோதனை, மருந்துகள், ஆய்வுகள் ஒரே தளத்தில்.", nav_doctors: "மருத்துவர்கள்", nav_facilities: "மருத்துவமனைகள் & ஆய்வகங்கள்", nav_emergency: "அவசரம்", login: "உள்நுழைவு", dashboard: "முகப்பு", find: "மருத்துவரைத் தேடு", search_ph: "மருத்துவர், சிறப்பு அல்லது மருத்துவமனை" },
+  hi: { hero_title: "हर चेन्नई घर के लिए स्वास्थ्य सेवा", hero_sub: "वीडियो पर डॉक्टर से मिलें, AI ट्राइएज, दवाइयाँ और जाँच एक ही नेटवर्क पर।", nav_doctors: "डॉक्टर", nav_facilities: "अस्पताल और लैब", nav_emergency: "आपातकाल", login: "लॉग इन", dashboard: "डैशबोर्ड", find: "डॉक्टर खोजें", search_ph: "डॉक्टर, विशेषज्ञता या अस्पताल खोजें" },
+};
