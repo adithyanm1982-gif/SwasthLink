@@ -1,34 +1,34 @@
 # SwasthLink 🩺
 **AI-Powered Unified Triage Engine & Local Healthcare Ecosystem**
 
-> *Intelligent, accessible, and continuous healthcare for every patient—anytime, anywhere.*[cite: 1, 12]
+> *Intelligent, accessible, and continuous healthcare for every patient—anytime, anywhere.*
 
 ---
 
 ## 📌 Overview
-**SwasthLink** is an offline-first, multimodal AI healthcare platform built to close the accessibility, diagnostic, and post-consultation gaps in rural and underserved regions[cite: 2, 5, 10]. Unlike conventional telemedicine apps that end after a video call, SwasthLink creates a **closed-loop care continuum**—guiding patients from initial symptom screening (via image, voice, or text) to safety-validated care routing, doctor tele-consultations, and local pharmacy or diagnostic lab fulfillment[cite: 5, 10].
+**SwasthLink** is an offline-first, multimodal AI healthcare platform built to close the accessibility, diagnostic, and post-consultation gaps in rural and underserved regions. Unlike conventional telemedicine apps that end after a video call, SwasthLink creates a **closed-loop care continuum**—guiding patients from initial symptom screening (via image, voice, or text) to safety-validated care routing, doctor tele-consultations, and local pharmacy or diagnostic lab fulfillment.
 
-Developed for **SKC Technova'26** (*Track 3: Technology for Social Impact & Sustainability*)[cite: 1].
+Developed for **SKC Technova'26** (*Track 3: Technology for Social Impact & Sustainability*)
 
 ---
 
 ## 🎯 The Problem It Solves
-* **Unscreened ER Congestion & Delayed Care:** Patients often lack clarity on symptom severity or the right medical department, leading to delayed treatment or overcrowded emergency rooms[cite: 3].
-* **Fragmented Healthcare Workflows:** Existing platforms separate symptom checking, doctor consultations, pharmacies, and diagnostic labs into disconnected systems[cite: 3, 4].
-* **Rural Digital Exclusion:** Cloud-heavy healthcare applications fail in low-connectivity or zero-network regions and exclude non-tech-savvy users with text-heavy interfaces[cite: 2, 4, 10].
-* **Medical Jargon & Health Literacy Gaps:** Dense diagnostic and clinical reports prevent patients from understanding their conditions and next steps[cite: 3, 8].
+* **Unscreened ER Congestion & Delayed Care:** Patients often lack clarity on symptom severity or the right medical department, leading to delayed treatment or overcrowded emergency rooms.
+* **Fragmented Healthcare Workflows:** Existing platforms separate symptom checking, doctor consultations, pharmacies, and diagnostic labs into disconnected systems.
+* **Rural Digital Exclusion:** Cloud-heavy healthcare applications fail in low-connectivity or zero-network regions and exclude non-tech-savvy users with text-heavy interfaces.
+* **Medical Jargon & Health Literacy Gaps:** Dense diagnostic and clinical reports prevent patients from understanding their conditions and next steps.
 
 ---
 
 ## ✨ Key Features
-* **Multimodal Patient Entry:** Describe symptoms naturally via **medical images** (e.g., skin, eye, wounds), **vernacular voice input**, or **text**[cite: 5, 9, 10].
+* **Multimodal Patient Entry:** Describe symptoms naturally via **medical images** (e.g., skin, eye, wounds), **vernacular voice input**, or **text**.
 * **Smart AI Triage & Safety Gateway:** Powered by a lightweight **MobileNetV3-Small CNN** and rule-based symptom mapping with strict input validation, PII protection, and ML validation to route cases safely into:
   1. **First Aid Guidance**
   2. **Doctor Tele-Consultation**
-  3. **Emergency Support & Dispatch**[cite: 6, 8]
-* **Offline-First Edge Architecture:** Runs ultra-fast on-device inference with local data caching, Google ML Kit OCR, cached ABHA records, and SMS fallback alerts for uninterrupted functionality in low-bandwidth areas[cite: 8, 10].
-* **Closed-Loop Local Fulfillment:** Connects patients directly to nearby pharmacies for medicine delivery and local diagnostic labs for scan/test bookings[cite: 5, 8, 10].
-* **Plain-Language Report Analyzer:** Translates complex lab and medical reports into clear, accessible summaries[cite: 7, 8].
+  3. **Emergency Support & Dispatch**
+* **Offline-First Edge Architecture:** Runs ultra-fast on-device inference with local data caching, Google ML Kit OCR, cached ABHA records, and SMS fallback alerts for uninterrupted functionality in low-bandwidth areas.
+* **Closed-Loop Local Fulfillment:** Connects patients directly to nearby pharmacies for medicine delivery and local diagnostic labs for scan/test bookings.
+* **Plain-Language Report Analyzer:** Translates complex lab and medical reports into clear, accessible summaries.
 
 ---
 
