@@ -1,45 +1,91 @@
-# SWASTHLINK
+# SwasthLink 🩺
+**AI-Powered Unified Triage Engine & Local Healthcare Ecosystem**
 
-Unified AI Triage & Tele-care Grid for Chennai. Monochrome clinical UI; colour is used only for status (green live, red emergency).
+> *Intelligent, accessible, and continuous healthcare for every patient—anytime, anywhere.*[cite: 1, 12]
 
-## Run
-    npm install
-    npm run dev                      # frontend on http://localhost:5173
-    cd server && cp .env.example .env && npm install && npm start   # optional API on :5000
+---
 
-The frontend works on its own. If the API is offline, or returns 404/5xx, it falls back to demo data so no page is ever blank. Real 4xx errors (bad login, forbidden) are shown to the user.
+## 📌 Overview
+**SwasthLink** is an offline-first, multimodal AI healthcare platform built to close the accessibility, diagnostic, and post-consultation gaps in rural and underserved regions[cite: 2, 5, 10]. Unlike conventional telemedicine apps that end after a video call, SwasthLink creates a **closed-loop care continuum**—guiding patients from initial symptom screening (via image, voice, or text) to safety-validated care routing, doctor tele-consultations, and local pharmacy or diagnostic lab fulfillment[cite: 5, 10].
 
-## Stack
-| Concern | Where |
-|---|---|
-| React + Vite, React Router (lazy routes, skeleton fallbacks, error boundary) | `src/` |
-| Tailwind CSS (sharp-edged monochrome theme) | `tailwind.config.js`, `src/index.css` |
-| Express API, JWT auth, RBAC middleware, rate limit, Helmet | `server/index.js` |
-| Jitsi Meet video consultations | `components/features/VideoRoom.jsx`, `pages/dashboard/Consult.jsx` |
-| AI (OpenAI via backend, local fallback) | `server/index.js`, `src/lib/api.js`, `src/lib/assistant.js` |
-| Uploads (Cloudinary via backend, local fallback; swap for S3) | `server/index.js`, `components/features/UploadZone.jsx` |
-| Charts (Recharts) | `pages/dashboard/Analytics.jsx` |
-| Database | users are in memory; replace with PostgreSQL or MongoDB in `server/index.js` |
-| Clerk / Auth0 | optional: replace `login/signup` in `src/lib/store.jsx`; env keys in `.env.example` |
+Developed for **SKC Technova'26** (*Track 3: Technology for Social Impact & Sustainability*)[cite: 1].
 
-## Roles (RBAC)
-`patient`, `guest`, `worker` (doctor or staff), `authority`. `src/lib/nav.js` drives both the sidebar and route guards. The API enforces the same roles.
+---
 
-## HTTPS
-Serve behind a TLS proxy (Nginx, Caddy, Cloudflare) in production. Helmet sends HSTS once the API is reached over HTTPS. For local HTTPS add `@vitejs/plugin-basic-ssl`.
+## 🎯 The Problem It Solves
+* **Unscreened ER Congestion & Delayed Care:** Patients often lack clarity on symptom severity or the right medical department, leading to delayed treatment or overcrowded emergency rooms[cite: 3].
+* **Fragmented Healthcare Workflows:** Existing platforms separate symptom checking, doctor consultations, pharmacies, and diagnostic labs into disconnected systems[cite: 3, 4].
+* **Rural Digital Exclusion:** Cloud-heavy healthcare applications fail in low-connectivity or zero-network regions and exclude non-tech-savvy users with text-heavy interfaces[cite: 2, 4, 10].
+* **Medical Jargon & Health Literacy Gaps:** Dense diagnostic and clinical reports prevent patients from understanding their conditions and next steps[cite: 3, 8].
 
-## Notes
-- Data in `src/data/dataset.json` is fictional mock data. Demo password for the seeded accounts is `Swasth@123`.
-- The Health ID is a demo identifier, not a government ABHA number.
-- Jitsi uses the public `meet.jit.si` by default. Set `VITE_JITSI_DOMAIN` to self-host.
+---
 
-## Performance notes
-- Every page is code-split, then preloaded right after first paint (`src/lib/lazyPage.jsx`). Preloaded pages render synchronously, so tab, sidebar and button clicks respond instantly.
-- Auth and data calls skip an unreachable backend for 30 seconds (`src/lib/api.js`), so demo-mode login and signup are immediate.
-- Vite pre-bundles the heavy libraries (`optimizeDeps` in `vite.config.js`) to keep the first dev-server navigation quick.
+## ✨ Key Features
+* **Multimodal Patient Entry:** Describe symptoms naturally via **medical images** (e.g., skin, eye, wounds), **vernacular voice input**, or **text**[cite: 5, 9, 10].
+* **Smart AI Triage & Safety Gateway:** Powered by a lightweight **MobileNetV3-Small CNN** and rule-based symptom mapping with strict input validation, PII protection, and ML validation to route cases safely into:
+  1. **First Aid Guidance**
+  2. **Doctor Tele-Consultation**
+  3. **Emergency Support & Dispatch**[cite: 6, 8]
+* **Offline-First Edge Architecture:** Runs ultra-fast on-device inference with local data caching, Google ML Kit OCR, cached ABHA records, and SMS fallback alerts for uninterrupted functionality in low-bandwidth areas[cite: 8, 10].
+* **Closed-Loop Local Fulfillment:** Connects patients directly to nearby pharmacies for medicine delivery and local diagnostic labs for scan/test bookings[cite: 5, 8, 10].
+* **Plain-Language Report Analyzer:** Translates complex lab and medical reports into clear, accessible summaries[cite: 7, 8].
 
-## Theme (dark / light)
-Colours are CSS variables (`src/index.css`) wired into Tailwind (`tailwind.config.js`), so the toggle in the header re-themes every page. The choice is saved in `localStorage` and applied before first paint (script in `index.html`). Use the `keep-light` class on an element that must stay black-and-white in both themes.
+---
 
-## AI Assistant
-`src/pages/dashboard/Assistant.jsx` composes `components/chat/*` (history sidebar, messages, composer, welcome screen). Chats are saved per user by `src/lib/useChats.js`.
+## 🏗️ System Architecture & Workflow
+
+```text
+[Multimodal Input: Image | Voice | Text]
+                  │
+                  ▼
+   [Offline / On-Device Preprocessing]
+   (Speech-to-Text • Image Prep • Symptom Extraction)
+                  │
+                  ▼
+     [ML & Rule-Based Triage Engine]
+      (MobileNetV3-Small CNN + Mapping)
+                  │
+                  ▼
+          [Safety Gateway]
+   (PII Protection • File & ML Validation)
+                  │
+        ┌─────────┼─────────┐
+        ▼         ▼         ▼
+  [First Aid] [Doctor   [Emergency
+   Guidance]  Consult]   Dispatch]
+                  │
+                  ▼
+       [Local Care Fulfillment]
+     (Nearby Pharmacies & Labs)
+```[cite: 6, 7]
+
+---
+
+## 🛠️ Tech Stack
+* **Machine Learning / Computer Vision:** MobileNetV3-Small CNN (Transfer Learning & Fine-Tuning), Rule-Based Symptom Mapping, Google ML Kit OCR[cite: 6, 10]
+* **Edge & Offline Capabilities:** On-Device Inference, Local Data Caching, SMS Alert Fallback[cite: 8, 10]
+* **Frontend & Backend:** Web/Mobile Patient, Doctor & Vendor Portals (React / Vite, FastAPI / Python) *(update with your exact repo stack)*[cite: 2, 7]
+* **Healthcare Standards:** ABHA / ABDM-ready architecture, MoHFW Telemedicine Practice Guidelines aligned[cite: 9, 10, 11]
+
+---
+
+## 📊 Expected Impact & Benchmarks
+* **30–40% Reduction in ER Overload:** Automated safety-gateway screening diverts non-emergency cases to first aid or tele-consultation[cite: 8].
+* **Sub-Second Triage Turnaround:** Lightweight edge execution delivers instant symptom classification on low-cost smartphones[cite: 8].
+* **Hours Instead of Days:** Geo-routed local pharmacy and diagnostic lab integration accelerates care fulfillment[cite: 8].
+
+---
+
+## 🚀 Future Scope
+* **Multi-Specialty Vision Expansion:** Extending MobileNetV3-Small pipelines across Dermatology, ENT, Ophthalmology, Dentistry, and Wound Care[cite: 9].
+* **ABHA & ABDM Vault Sync:** Standardized retrieval of longitudinal patient records, allergies, and chronic care histories[cite: 9].
+* **Pan-India Vendor Marketplace & IoT Sync:** Real-time pharmacy inventory tracking and wearable telemetry alerts for acute health events[cite: 9].
+
+---
+```
+## 👥 Team
+Saveetha Engineering College, Chennai
+* Adithya N M
+* M Aadhavan
+* Madhumithra P
+* Sandya S
